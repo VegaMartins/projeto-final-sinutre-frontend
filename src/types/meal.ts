@@ -1,11 +1,5 @@
 export type MealCategory = 'breakfast' | 'lunch' | 'snack' | 'dinner';
 
-export interface MealCategoryInfo {
-  id: MealCategory;
-  label: string;
-  icon: string;
-}
-
 export interface FoodItem {
   id: string;
   name: string;
