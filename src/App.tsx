@@ -1,15 +1,35 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { DashboardPage } from '@/pages/DashboardPage';
 import { LoginPage } from '@/pages/LoginPage';
+import { getToken, setToken } from '@/lib/api';
 
 const DRAWER_ID = 'main-drawer';
 
-export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+// Lê ?token=... do callback do backend (rota /auth/github/callback),
+// salva no localStorage e limpa a query string da URL.
+function consumeTokenFromUrl(): string | null {
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get('token');
+  if (!token) return null;
+  setToken(token);
+  window.history.replaceState({}, '', window.location.pathname);
+  return token;
+}
 
-  if (!isAuthenticated) {
-    return <LoginPage onLoginWithGithub={() => setIsAuthenticated(true)} />;
+export default function App() {
+  const [token, setLocalToken] = useState<string | null>(
+    () => consumeTokenFromUrl() ?? getToken(),
+  );
+
+  useEffect(() => {
+    // Caso o token chegue depois do mount (ex.: voltando do GitHub).
+    const fromUrl = consumeTokenFromUrl();
+    if (fromUrl) setLocalToken(fromUrl);
+  }, []);
+
+  if (!token) {
+    return <LoginPage />;
   }
 
   return (
