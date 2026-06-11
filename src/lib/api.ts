@@ -1,5 +1,6 @@
 // Cliente HTTP mínimo do front para o sinutre-back.
 // Lê a base do servidor de import.meta.env.VITE_API_URL.
+import axios from 'axios';
 
 export const API_URL = import.meta.env.VITE_API_URL;
 
@@ -40,3 +41,20 @@ export async function apiFetch<T>(
 
   return res.json() as Promise<T>;
 }
+
+
+export const api = axios.create({
+  baseURL: API_URL,
+});
+
+
+api.interceptors.request.use((config) => {
+  const token = getToken();
+
+  if (token) {
+    config.headers.Authorization =
+      `Bearer ${token}`;
+  }
+
+  return config;
+});
