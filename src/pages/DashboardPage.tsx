@@ -6,6 +6,7 @@ import { MealFab } from '@/components/meals/MealFab';
 import { MealsList } from '@/components/meals/MealsList';
 import { MealsTable } from '@/components/meals/MealsTable';
 import { AddMealModal } from '@/components/modal/AddMealModal';
+
 import {
   CURRENT_USER,
   MACRO_SUMMARY,
