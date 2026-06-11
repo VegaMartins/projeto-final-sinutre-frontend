@@ -14,6 +14,9 @@ export function MealItemsTable({ items, onRemove }: MealItemsTableProps) {
             <th>Alimento</th>
             <th>Quantidade</th>
             <th>Calorias</th>
+            <th>Carboidratos</th>
+            <th>Proteínas</th>
+            <th>Gordura</th>
             <th />
           </tr>
         </thead>
@@ -27,6 +30,9 @@ export function MealItemsTable({ items, onRemove }: MealItemsTableProps) {
                   {item.calories} kcal
                 </span>
               </td>
+              <td>{item.carbs} g</td>
+              <td>{item.protein} g</td>
+              <td>{item.fat} g</td>
               <td>
                 <button
                   type="button"

@@ -58,7 +58,6 @@ export function DashboardPage({ drawerId }: DashboardPageProps) {
       <AddMealModal
         open={modal.open}
         macros={MODAL_MACROS}
-        items={[]}
         typeMeal={modal.selectedCategory}
         onClose={modal.close}
         onSave={modal.close}

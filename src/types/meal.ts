@@ -1,10 +1,16 @@
 export type MealCategory = 'breakfast' | 'lunch' | 'snack' | 'dinner';
 
 export interface FoodItem {
-  id: string;
+  id: number;
+  foodId: number;
+
   name: string;
   grams: number;
+
   calories: number;
+  carbs: number;
+  protein: number;
+  fat: number;
 }
 
 export interface Meal {

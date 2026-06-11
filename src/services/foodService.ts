@@ -16,3 +16,15 @@ export async function createFood(
 
   return response.data;
 }
+
+export async function searchFoods(
+  search: string,
+) {
+  const response = await api.get('/foods', {
+    params: {
+      search,
+    },
+  });
+
+  return response.data;
+}

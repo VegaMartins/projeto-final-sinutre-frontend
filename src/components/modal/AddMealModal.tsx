@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { FoodItem, MacroSummary } from '@/types/meal';
 import { MealItemForm } from './MealItemForm';
 import { MealItemsTable } from './MealItemsTable';
@@ -8,7 +9,6 @@ import type { MealCategory } from '@/types/meal';
 interface AddMealModalProps {
   open: boolean;
   macros: Pick<MacroSummary, 'carbs' | 'proteins' | 'fats' | 'calories'>;
-  items: FoodItem[];
   typeMeal?: MealCategory;
   onClose: () => void;
   onSave: () => void;
@@ -18,12 +18,32 @@ interface AddMealModalProps {
 export function AddMealModal({
   open,
   macros,
-  items,
   typeMeal,
   onClose,
   onSave,
   onRemoveItem,
 }: AddMealModalProps) {
+  const [items, setItems] = useState<FoodItem[]>([]);
+
+  function handleAddItem(
+    item: FoodItem,
+  ) {
+    setItems((current) => [
+      ...current,
+      item,
+    ]);
+  }
+
+  function handleRemoveItem(
+    item: FoodItem,
+  ) {
+    setItems((current) =>
+      current.filter(
+        (x) => x.id !== item.id,
+      ),
+    );
+  }
+
   return (
     <div className={`modal ${open ? 'modal-open' : ''}`} role="dialog">
       <div className="modal-box max-w-6xl">
@@ -34,10 +54,10 @@ export function AddMealModal({
 
         <div className="mb-4">
           <h3 className="text-lg font-semibold mb-4">Itens da Refeição</h3>
-          <MealItemForm />
+          <MealItemForm  onAdd={handleAddItem} />
         </div>
 
-        <MealItemsTable items={items} onRemove={onRemoveItem} />
+        <MealItemsTable items={items} onRemove={handleRemoveItem} />
 
         <div className="modal-action">
           <button type="button" className="btn btn-ghost" onClick={onClose}>
