@@ -1,7 +1,15 @@
 import { MEAL_CATEGORIES } from '@/constants/mealCategories';
 import { FormField } from '../forms/FormField';
 
-export function MealMetadataForm() {
+
+interface MealMetadataProps {
+  typeMeal?: 'breakfast' | 'snack' | 'lunch'| 'dinner';
+}
+
+
+export function MealMetadataForm({
+  typeMeal
+}: MealMetadataProps) {
   return (
     <section className="grid lg:grid-cols-3 gap-4 mb-8">
       <FormField label="Descrição" htmlFor="meal-description" className="lg:col-span-1">
@@ -23,7 +31,7 @@ export function MealMetadataForm() {
             Selecione categoria
           </option>
           {MEAL_CATEGORIES.map(category => (
-            <option key={category.id} value={category.id}>
+            <option key={category.id} value={category.id} selected={(typeMeal && category.id==typeMeal)}>
               {category.label}
             </option>
           ))}

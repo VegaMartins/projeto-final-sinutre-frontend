@@ -53,12 +53,13 @@ export function DashboardPage({ drawerId }: DashboardPageProps) {
         <MealsList meals={RECENT_MEALS} />
       </div>
 
-      <MealFab onSelectCategory={modal.openWith} />
+      <MealFab onSelectCategory={modal.selectedCategory} />
 
       <AddMealModal
         open={modal.open}
         macros={MODAL_MACROS}
-        items={SAMPLE_MEAL_ITEMS}
+        items={[]}
+        typeMeal={modal.selectedCategory}
         onClose={modal.close}
         onSave={modal.close}
       />
