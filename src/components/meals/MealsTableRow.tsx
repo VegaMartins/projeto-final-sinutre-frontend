@@ -1,6 +1,7 @@
 import { DotsThree } from '@phosphor-icons/react';
 import { MEAL_CATEGORY_BY_ID } from '@/constants/mealCategories';
-import type { Meal } from '@/types/meal';
+import type { Meal } from '@/types/mealSummary';
+import { formatDate } from '@/utils/date';
 
 interface MealsTableRowProps {
   meal: Meal;
@@ -8,16 +9,17 @@ interface MealsTableRowProps {
 }
 
 export function MealsTableRow({ meal, onActionClick }: MealsTableRowProps) {
-  const category = MEAL_CATEGORY_BY_ID[meal.category];
+  const category = MEAL_CATEGORY_BY_ID[meal.type];
 
   return (
     <tr className="hover">
       <td className="text-center font-bold text-base-content/60">{meal.id}</td>
-      <td className="font-medium">{meal.date}</td>
+      <td className="font-medium">{meal.name}</td>
+      <td className="font-medium">{formatDate(meal.createdAt)}</td>
       <td className="font-semibold">{category.label}</td>
       <td>
         <span className="badge badge-primary badge-outline">
-          {meal.calories} kcal
+          {meal.totals.calories} kcal
         </span>
       </td>
       <td className="text-center">

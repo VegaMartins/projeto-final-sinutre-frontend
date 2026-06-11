@@ -4,6 +4,7 @@ import {
   Coffee,
   Hamburger,
   MoonStars,
+  DoorIcon
 } from '@phosphor-icons/react';
 import type { MealCategory } from '@/types/meal';
 
@@ -17,7 +18,7 @@ export const MEAL_CATEGORIES: readonly MealCategoryInfo[] = [
   { id: 'breakfast', label: 'Café da Manhã', Icon: Coffee },
   { id: 'snack', label: 'Lanche', Icon: Hamburger },
   { id: 'lunch', label: 'Almoço', Icon: BowlFood },
-  { id: 'dinner', label: 'Jantar', Icon: MoonStars },
+  { id: 'dinner', label: 'Jantar', Icon: MoonStars }
 ] as const;
 
 export const MEAL_CATEGORY_BY_ID: Record<MealCategory, MealCategoryInfo> =

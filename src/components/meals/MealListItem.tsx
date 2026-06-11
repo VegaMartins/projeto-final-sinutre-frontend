@@ -1,6 +1,7 @@
 import { DotsThreeVertical } from '@phosphor-icons/react';
 import { MEAL_CATEGORY_BY_ID } from '@/constants/mealCategories';
-import type { Meal } from '@/types/meal';
+import type { Meal } from '@/types/mealSummary';
+import { formatDate } from '@/utils/date';
 
 interface MealListItemProps {
   meal: Meal;
@@ -8,7 +9,7 @@ interface MealListItemProps {
 }
 
 export function MealListItem({ meal, onActionClick }: MealListItemProps) {
-  const category = MEAL_CATEGORY_BY_ID[meal.category];
+  const category = MEAL_CATEGORY_BY_ID[meal.type] ;
   const Icon = category.Icon;
 
   return (
@@ -19,10 +20,10 @@ export function MealListItem({ meal, onActionClick }: MealListItemProps) {
         </div>
         <div className="flex-1 min-w-0">
           <p className="font-semibold text-sm">{category.label}</p>
-          <p className="text-xs text-base-content/50">{meal.date}</p>
+          <p className="text-xs text-base-content/50">{formatDate(meal.createdAt)}</p>
         </div>
         <span className="badge badge-primary badge-outline badge-sm">
-          {meal.calories} kcal
+          {meal.totals.calories} kcal
         </span>
         <button
           type="button"
