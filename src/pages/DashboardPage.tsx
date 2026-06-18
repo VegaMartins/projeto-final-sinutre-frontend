@@ -11,8 +11,8 @@ import { useAuth } from '@/context/AuthContext';
 import {
   MACRO_SUMMARY,
   MEALS_SUMMARY,
-  RECENT_MEALS,
-  SAMPLE_MEAL_ITEMS,
+  // RECENT_MEALS,
+  // SAMPLE_MEAL_ITEMS,
 } from '@/data/mockData';
 import { useMealModal } from '@/hooks/useMealModal';
 
@@ -50,8 +50,8 @@ export function DashboardPage({ drawerId }: DashboardPageProps) {
           <AddMealCard onSelectCategory={modal.openWith} />
         </div>
 
-        <MealsTable meals={RECENT_MEALS} />
-        <MealsList meals={RECENT_MEALS} />
+        <MealsTable meals={[]} />
+        <MealsList meals={[]} />
       </div>
 
       <MealFab onSelectCategory={modal.openWith} />
@@ -59,7 +59,8 @@ export function DashboardPage({ drawerId }: DashboardPageProps) {
       <AddMealModal
         open={modal.open}
         macros={MODAL_MACROS}
-        items={SAMPLE_MEAL_ITEMS}
+        items={[]}
+        typeMeal={modal.selectedCategory}
         onClose={modal.close}
         onSave={modal.close}
       />
