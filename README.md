@@ -8,8 +8,8 @@ Este repositório contém o frontend do sistema SiNutre, desenvolvido como proje
 
 ##  Requisitos Complementares Implementados
 Abaixo estão listadas as funcionalidades desenvolvidas, referenciadas de acordo com a tabela oficial de requisitos do curso:
-| Ref | Descrição do Requisito | Status | Pontos |
-| :--- | :--- | :---: | :---: |
+| Ref | Descrição do Requisito 
+| :--- | :--- | 
 | **01** | Alterar um alimento cadastrado (Página de Alimentos) | 
 | **02** | Excluir um alimento cadastrado (Página de Alimentos) |
 | **03** | Validação de dados no cadastro/alteração de alimentos | 
