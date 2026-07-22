@@ -10,6 +10,7 @@ import { AddMealModal } from '@/components/modal/AddMealModal';
 import { useAuth } from '@/context/AuthContext';
 import { Meal } from '@/types/mealSummary';
 import { api } from '@/lib/api';
+import { getProfile } from '@/services/userService'; 
 
 import {
   //MACRO_SUMMARY,
@@ -39,6 +40,7 @@ export function DashboardPage({ drawerId }: DashboardPageProps) {
 
   const [meals, setMeals] = useState<Meal[]>([]);
   const [loading, setLoading] = useState(true);
+  const [target, setTarget] = useState(2000);
 
   async function loadMeals() {
     try {
@@ -51,6 +53,12 @@ export function DashboardPage({ drawerId }: DashboardPageProps) {
 
   useEffect(() => {
     loadMeals();
+
+      getProfile().then(data => {
+    if (data.targetDietDaily > 0) {
+      setTarget(data.targetDietDaily);
+    }
+  });
   }, []);
 
   const mealsSummary = useMemo(() => {
@@ -108,7 +116,7 @@ export function DashboardPage({ drawerId }: DashboardPageProps) {
         fats: 0,
         calories: 0,
 
-        caloriesGoal: 1000, //ainda não veio do banco de dados
+        caloriesGoal: target, //ainda não veio do banco de dados
       },
     );
   }, [meals]);
@@ -124,7 +132,7 @@ export function DashboardPage({ drawerId }: DashboardPageProps) {
 
   return (
     <>
-      <div className="flex flex-col gap-6 w-full max-w-[1200px] mx-auto mb-8">
+      <div className="flex flex-col gap-6 w-full max-w-300 mx-auto mb-8">
         <Header
           drawerId={drawerId}
           userName={user.name}

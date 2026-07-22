@@ -27,6 +27,11 @@ export function AddFoodModal({
   const [loading, setLoading] = useState(false);
 
   async function handleSave() {
+
+  if (!name || !caloriesPer100g ) {
+    alert('Preencha todos os campos para salvar as alterações.');
+    return;
+  }
     try {
       setLoading(true);
 
@@ -65,6 +70,7 @@ export function AddFoodModal({
 
         <div className="space-y-3 mt-4">
           <input
+            required
             className="input input-bordered w-full"
             placeholder="Nome"
             value={name}
@@ -75,6 +81,7 @@ export function AddFoodModal({
 
           <input
             type="number"
+            min="0"
             className="input input-bordered w-full"
             placeholder="Calorias por 100g"
             value={caloriesPer100g}
@@ -85,6 +92,7 @@ export function AddFoodModal({
 
           <input
             type="number"
+            min="0"
             className="input input-bordered w-full"
             placeholder="Carboidratos por 100g"
             value={carbsPer100g}
@@ -95,6 +103,7 @@ export function AddFoodModal({
 
           <input
             type="number"
+            min="0"
             className="input input-bordered w-full"
             placeholder="Proteínas por 100g"
             value={proteinPer100g}
@@ -105,6 +114,7 @@ export function AddFoodModal({
 
           <input
             type="number"
+            min="0"
             className="input input-bordered w-full"
             placeholder="Gorduras por 100g"
             value={fatPer100g}
@@ -112,6 +122,8 @@ export function AddFoodModal({
               setFatPer100g(e.target.value)
             }
           />
+
+
         </div>
 
         <div className="modal-action">

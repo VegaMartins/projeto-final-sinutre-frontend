@@ -5,6 +5,7 @@ import {
   ChartLineUp,
   Gear,
   House,
+  User,
 } from '@phosphor-icons/react';
 
 export interface NavItem {
@@ -20,4 +21,10 @@ export const NAV_ITEMS: readonly NavItem[] = [
   // { id: 'activities', label: 'Atividades', Icon: Barbell, to: "/" },
   { id: 'progress', label: 'Progresso', Icon: ChartLineUp, to: "/stats" },
   { id: 'settings', label: 'Configurações', Icon: Gear, to:"/settings" },
+   {
+    id: 'profile',
+    label: 'Meu Perfil',
+    Icon: User,
+    to: '/perfil',
+  },
 ] as const;
