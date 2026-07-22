@@ -29,5 +29,5 @@ Abaixo estão listadas as funcionalidades desenvolvidas, referenciadas de acordo
 - **Frontend:** React 19, Vite, TypeScript, Tailwind CSS, daisyUI, Axios.
 - **Backend:** Node.js, Express, Prisma, SQLite.
 
-**Repositório Backend:**
+**Repositório Backend:** [https://github.com/VegaMartins/projeto-final---sinutre-backend]
 
