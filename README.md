@@ -3,8 +3,8 @@
 Este repositório contém o frontend do sistema SiNutre, desenvolvido como projeto final para o curso **Formação em Desenvolvimento Web Moderno**. O projeto foi evoluído a partir do MVP base, implementando melhorias de funcionalidades.
 
 ## Links de Produção (Requisitos Obrigatórios)
-- **Frontend (Vercel):** 
-- **Backend (Railway):**
+- **Frontend (Vercel):** [https://projeto-final-sinutre.vercel.app/]
+- **Backend (Railway):** [https://projeto-final-sinutre-backend-production.up.railway.app/]
 
 ##  Requisitos Complementares Implementados
 Abaixo estão listadas as funcionalidades desenvolvidas, referenciadas de acordo com a tabela oficial de requisitos do curso:
